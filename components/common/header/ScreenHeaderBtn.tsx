@@ -1,14 +1,22 @@
-import React from 'react'
-import { View, Text } from 'react-native'
+import React, { FC } from "react";
+import { TouchableOpacity, Image } from "react-native";
+import styles, { dynamicStyles } from "./screenheader.style";
 
-import styles from './screenheader.style'
-
-const ScreenHeaderBtn = () => {
-  return (
-    <View>
-      <Text>ScreenHeaderBtn</Text>
-    </View>
-  )
+interface Props {
+  iconUrl: any;
+  dimension: string;
 }
 
-export default ScreenHeaderBtn
+const ScreenHeaderBtn: FC<Props> = ({ iconUrl, dimension }) => {
+  const { btnImg } = dynamicStyles(dimension);
+
+  const handlePress = () => {};
+  return (
+    <TouchableOpacity style={styles.btnContainer} onPress={handlePress}>
+      {/* @ts-ignore */}
+      <Image source={iconUrl} resizeMode="cover" style={btnImg} />
+    </TouchableOpacity>
+  );
+};
+
+export default ScreenHeaderBtn;

@@ -1,5 +1,4 @@
 import { StyleSheet } from "react-native";
-
 import { COLORS, SIZES } from "../../../constants";
 
 const styles = StyleSheet.create({
@@ -11,11 +10,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  btnImg: (dimension) => ({
+});
+
+export const dynamicStyles = (dimension: number | string) => ({
+  btnImg: {
     width: dimension,
     height: dimension,
     borderRadius: SIZES.small / 1.25,
-  }),
+  },
 });
 
 export default styles;
