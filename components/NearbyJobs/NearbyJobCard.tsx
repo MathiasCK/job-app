@@ -10,7 +10,7 @@ interface Props {
   handleNavigate: () => void;
 }
 
-const PopularJobCard: FC<Props> = ({ job, handleNavigate }) => {
+const NearbyJobCard: FC<Props> = ({ job, handleNavigate }) => {
   return (
     <TouchableOpacity style={styles.container} onPress={handleNavigate}>
       <View style={[styles.logoContainer]}>
@@ -37,4 +37,4 @@ const PopularJobCard: FC<Props> = ({ job, handleNavigate }) => {
   );
 };
 
-export default PopularJobCard;
+export default NearbyJobCard;

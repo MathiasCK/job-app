@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import { View, Text, ActivityIndicator, FlatList } from "react-native";
+import React from "react";
+import { View, Text, ActivityIndicator } from "react-native";
 
 import styles from "./nearbyjobs.style";
 import { useRouter } from "expo-router";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { COLORS, SIZES } from "~/constants";
+import { COLORS } from "~/constants";
 
 import { useFetch } from "~/hooks";
 import { Job } from "~/types";
-import NearbyJobCard from "~/components/common/cards/nearby/NearbyJobCard";
+import NearbyJobCard from "./NearbyJobCard";
 
 const NearbyJobs = () => {
   const router = useRouter();

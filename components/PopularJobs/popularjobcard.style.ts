@@ -1,5 +1,5 @@
 import { StyleSheet, TextStyle, ViewStyle, ImageStyle } from "react-native";
-import { COLORS, FONT, SHADOWS, SIZES } from "../../../../constants";
+import { COLORS, FONT, SIZES, SHADOWS } from "~/constants";
 import { Job } from "~/types";
 
 interface Styles {

@@ -5,9 +5,9 @@ import styles from "./popularjobs.style";
 import { useRouter } from "expo-router";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { COLORS, SIZES } from "~/constants";
-import PopularJobCard from "~/components/common/cards/popular/PopularJobCard";
 import { useFetch } from "~/hooks";
 import { Job } from "~/types";
+import PopularJobCard from "./PopularJobCard";
 
 const Popularjobs = () => {
   const router = useRouter();

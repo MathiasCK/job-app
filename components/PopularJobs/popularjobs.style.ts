@@ -1,6 +1,5 @@
 import { StyleSheet, ViewStyle, TextStyle } from "react-native";
-
-import { FONT, SIZES, COLORS } from "../../../constants";
+import { COLORS, FONT, SIZES } from "~/constants";
 
 interface Styles {
   container: ViewStyle;
