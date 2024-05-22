@@ -1,8 +1,19 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, TextStyle, ViewStyle, ImageStyle } from "react-native";
+import { COLORS, FONT, SIZES } from "~/constants";
 
-import { COLORS, FONT, SIZES } from "../../../constants";
+interface Styles {
+  container: ViewStyle;
+  userName: TextStyle;
+  welcomeMessage: TextStyle;
+  searchContainer: ViewStyle;
+  searchWrapper: ViewStyle;
+  searchInput: TextStyle;
+  searchBtn: ViewStyle;
+  searchBtnImage: ImageStyle;
+  tabsContainer: ViewStyle;
+}
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create<Styles>({
   container: {
     width: "100%",
   },
@@ -56,17 +67,20 @@ const styles = StyleSheet.create({
     width: "100%",
     marginTop: SIZES.medium,
   },
-  tab: (activeJobType, item) => ({
+});
+
+export const dynamicStyles = {
+  tab: (activeJobType: string, item: string): ViewStyle => ({
     paddingVertical: SIZES.small / 2,
     paddingHorizontal: SIZES.small,
     borderRadius: SIZES.medium,
     borderWidth: 1,
     borderColor: activeJobType === item ? COLORS.secondary : COLORS.gray2,
   }),
-  tabText: (activeJobType, item) => ({
+  tabText: (activeJobType: string, item: string): TextStyle => ({
     fontFamily: FONT.medium,
     color: activeJobType === item ? COLORS.secondary : COLORS.gray2,
   }),
-});
+};
 
 export default styles;
