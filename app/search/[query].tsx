@@ -41,7 +41,7 @@ const JobSearch = () => {
 
   useEffect(() => {
     refetch();
-  }, []);
+  }, [refetch]);
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useMemo } from "react";
 import axios from "axios";
 
 const useFetch = <T>(
@@ -19,19 +19,22 @@ const useFetch = <T>(
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const options = {
-    method: "GET",
-    url: `https://jsearch.p.rapidapi.com/${endpoint}`,
-    params: {
-      ...query,
-    },
-    headers: {
-      "X-RapidAPI-Key": process.env.EXPO_PUBLIC_RAPID_API_KEY,
-      "X-RapidAPI-Host": "jsearch.p.rapidapi.com",
-    },
-  };
+  const options = useMemo(
+    () => ({
+      method: "GET",
+      url: `https://jsearch.p.rapidapi.com/${endpoint}`,
+      params: {
+        ...query,
+      },
+      headers: {
+        "X-RapidAPI-Key": process.env.EXPO_PUBLIC_RAPID_API_KEY,
+        "X-RapidAPI-Host": "jsearch.p.rapidapi.com",
+      },
+    }),
+    [endpoint, query],
+  );
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     setIsLoading(true);
     try {
       const response = await axios.request(options);
@@ -42,11 +45,11 @@ const useFetch = <T>(
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [options]);
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [fetchData]);
 
   const refetch = () => {
     fetchData();
