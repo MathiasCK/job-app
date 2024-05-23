@@ -17,13 +17,11 @@ import {
   Footer,
 } from "~/components";
 import { COLORS, SIZES, icons } from "~/constants";
-import { useFetch } from "~/hooks";
+import { useFetch, useTab } from "~/hooks";
 import { Job } from "~/types";
 
-const tabs = ["About", "Qualifications", "Responsibilities"];
-
 const JobDetails = () => {
-  const [activeTab, setActiveTab] = useState<string>(tabs[0]);
+  const { activeTab } = useTab();
   const [refreshing, setRefreshing] = useState<boolean>(false);
   const params = useLocalSearchParams();
   const router = useRouter();
@@ -108,11 +106,7 @@ const JobDetails = () => {
                 companyName={data[0].employer_name}
                 location={data[0].job_country}
               />
-              <Tabs
-                tabs={tabs}
-                activeTab={activeTab}
-                setActiveTab={setActiveTab}
-              />
+              <Tabs />
               {displayTabContent()}
             </View>
           )}

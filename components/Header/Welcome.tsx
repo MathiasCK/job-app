@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -10,18 +10,20 @@ import {
 import styles, { dynamicStyles } from "./welcome.style";
 import { useRouter } from "expo-router";
 import { SIZES, icons } from "~/constants";
+import { useSearch } from "~/hooks";
 
 const jobTypes = ["Full-time", "Part-time", "Contractor"];
 
-interface Props {
-  searchQuery: string;
-  setSearchQuery: (value: string) => void;
-  handleClick: () => void;
-}
-
-const Welcome: FC<Props> = ({ searchQuery, setSearchQuery, handleClick }) => {
-  const [activeJobType, setActiveJobType] = useState(jobTypes[0]);
+const Welcome = () => {
   const router = useRouter();
+  const { searchQuery, setSearchQuery } = useSearch();
+  const [activeJobType, setActiveJobType] = useState(jobTypes[0]);
+
+  const handleSearch = () => {
+    if (searchQuery) {
+      router.push(`/search/${searchQuery}`);
+    }
+  };
 
   return (
     <View>
@@ -38,7 +40,7 @@ const Welcome: FC<Props> = ({ searchQuery, setSearchQuery, handleClick }) => {
             placeholder="What are you looking for?"
           />
         </View>
-        <TouchableOpacity style={styles.searchBtn} onPress={handleClick}>
+        <TouchableOpacity style={styles.searchBtn} onPress={handleSearch}>
           <Image
             source={icons.search}
             resizeMode="contain"

@@ -3,12 +3,7 @@ import { View, Text, FlatList, TouchableOpacity } from "react-native";
 
 import styles, { dynamicStyles } from "./tabs.style";
 import { SIZES } from "~/constants";
-
-interface TabProps {
-  tabs: string[];
-  activeTab: string;
-  setActiveTab: (tab: string) => void;
-}
+import { useTab } from "~/hooks";
 
 interface TabButtonProps {
   name: string;
@@ -29,7 +24,8 @@ const TabButton: FC<TabButtonProps> = ({
   </TouchableOpacity>
 );
 
-const Tabs: FC<TabProps> = ({ tabs, activeTab, setActiveTab }) => {
+const Tabs = () => {
+  const { tabs, activeTab, setActiveTab } = useTab();
   return (
     <View style={styles.container}>
       <FlatList

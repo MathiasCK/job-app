@@ -1,5 +1,5 @@
 import { COLORS, SIZES, icons, images } from "~/constants";
-import { Stack, useRouter } from "expo-router";
+import { Stack } from "expo-router";
 import { SafeAreaView, ScrollView, View } from "react-native";
 import {
   NearbyJobs,
@@ -7,11 +7,8 @@ import {
   ScreenHeaderBtn,
   Welcome,
 } from "~/components";
-import { useState } from "react";
 
 const Home = () => {
-  const router = useRouter();
-  const [searchQuery, setSearchQuery] = useState<string>("");
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
       <Stack.Screen
@@ -36,16 +33,7 @@ const Home = () => {
             padding: SIZES.medium,
           }}
         >
-          <Welcome
-            searchQuery={searchQuery}
-            setSearchQuery={setSearchQuery}
-            handleClick={() => {
-              console.log(searchQuery);
-              if (searchQuery) {
-                router.push(`/search/${searchQuery}`);
-              }
-            }}
-          />
+          <Welcome />
           <PopularJobs />
           <NearbyJobs />
         </View>
