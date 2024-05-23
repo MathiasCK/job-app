@@ -1,50 +1,49 @@
-# Welcome to your Expo app 👋
+# Job Search App 🎉
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Introduction 🎬
 
-## Get started
+Welcome to my Job Search App! This is a React Native application that helps you find your dream job by fetching data from [jsearch.p.rapidapi.com](https://jsearch.p.rapidapi.com). It displays popular and nearby jobs right on the home page. You can also search for jobs and get detailed information about each job. Let's dive in! 🏊‍♂️
 
-1. Install dependencies
+## Features 🚀
+
+- **Job Discovery**: See popular and nearby jobs on the home page. 🏠
+- **Job Search**: Search for jobs using the input field. The app will navigate you to `/search/[query]` to display jobs matching your query. 🔍
+- **Job Details**: Click on any job card to see more information, qualifications, and responsibilities for the job at `/job-detail/[id]`. 📄
+- **Apply for Jobs**: From the job detail page, click "apply" to be redirected to the Google job page to apply for the job. 📝
+
+## Setup ⚙️
+
+To get a local copy up and running, follow these simple steps from your terminal:
+
+1. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/MathiasCK/job-app.git
+   ```
+
+2. **Navigate to the project folder**
+
+   ```bash
+   cd job-app
+   ```
+
+3. **Install root & client dependencies**
 
    ```bash
    npm install
    ```
 
-2. Start the app
+## Running the Project 🚀
 
-   ```bash
-    npx expo start
-   ```
+To run the project, follow these steps:
 
-In the output, you'll find options to open the app in a
+1. **Start both the server and client**:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+   ````bash
+   npm start
+   ``` 🏃‍♀️
+   ````
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+The server will be accessible at [http://localhost:8081](http://localhost:8081)
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Enjoy exploring the job market with my Job Search App! 🎉
