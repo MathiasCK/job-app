@@ -1,13 +1,22 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, TextStyle, ViewStyle } from "react-native";
 
 import { COLORS, SHADOWS, SIZES } from "~/constants";
 
-const styles = StyleSheet.create({
+interface Styles {
+  container: ViewStyle;
+}
+
+const styles = StyleSheet.create<Styles>({
   container: {
     marginTop: SIZES.small,
     marginBottom: SIZES.small / 2,
+    display: "flex",
+    alignItems: "center",
   },
-  btn: (name, activeTab) => ({
+});
+
+export const dynamicStyles = {
+  btn: (name: string, activeTab: string): ViewStyle => ({
     paddingVertical: SIZES.medium,
     paddingHorizontal: SIZES.xLarge,
     backgroundColor: name === activeTab ? COLORS.primary : "#F3F4F8",
@@ -16,11 +25,11 @@ const styles = StyleSheet.create({
     ...SHADOWS.medium,
     shadowColor: COLORS.white,
   }),
-  btnText: (name, activeTab) => ({
+  btnText: (name: string, activeTab: string): TextStyle => ({
     fontFamily: "DMMedium",
     fontSize: SIZES.small,
     color: name === activeTab ? "#C3BFCC" : "#AAA9B8",
   }),
-});
+};
 
 export default styles;

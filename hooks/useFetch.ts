@@ -4,7 +4,8 @@ import axios from "axios";
 const useFetch = <T>(
   endpoint: string,
   query: {
-    query: string;
+    job_id?: string;
+    query?: string;
     page?: string;
     num_pages?: string;
   },

@@ -1,8 +1,21 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, TextStyle, ViewStyle, ImageStyle } from "react-native";
 
 import { COLORS, FONT, SIZES } from "~/constants";
 
-const styles = StyleSheet.create({
+interface Styles {
+  container: ViewStyle;
+  logoBox: ViewStyle;
+  logoImage: ViewStyle;
+  jobTitleBox: ViewStyle;
+  jobTitle: TextStyle;
+  companyInfoBox: ViewStyle;
+  companyName: TextStyle;
+  locationBox: ViewStyle;
+  locationImage: ImageStyle;
+  locationName: TextStyle;
+}
+
+const styles = StyleSheet.create<Styles>({
   container: {
     marginVertical: SIZES.medium,
     justifyContent: "center",

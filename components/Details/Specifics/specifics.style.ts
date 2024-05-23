@@ -1,8 +1,17 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, TextStyle, ViewStyle } from "react-native";
 
 import { COLORS, FONT, SIZES } from "~/constants";
 
-const styles = StyleSheet.create({
+interface Styles {
+  container: ViewStyle;
+  title: TextStyle;
+  specificsContainer: ViewStyle;
+  specificsWrapper: ViewStyle;
+  specificsDot: ViewStyle;
+  specificsText: TextStyle;
+}
+
+const styles = StyleSheet.create<Styles>({
   container: {
     marginTop: SIZES.large,
     backgroundColor: "#FFF",
@@ -14,23 +23,23 @@ const styles = StyleSheet.create({
     color: COLORS.primary,
     fontFamily: FONT.bold,
   },
-  pointsContainer: {
+  specificsContainer: {
     marginVertical: SIZES.small,
   },
-  pointWrapper: {
+  specificsWrapper: {
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: "flex-start",
     marginVertical: SIZES.small / 1.25,
   },
-  pointDot: {
+  specificsDot: {
     width: 6,
     height: 6,
     borderRadius: 6,
     backgroundColor: COLORS.gray2,
     marginTop: 6,
   },
-  pointText: {
+  specificsText: {
     fontSize: SIZES.medium - 2,
     color: COLORS.gray,
     fontFamily: FONT.regular,

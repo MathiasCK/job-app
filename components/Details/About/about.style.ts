@@ -1,6 +1,13 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, ViewStyle } from "react-native";
 
 import { COLORS, FONT, SIZES } from "~/constants";
+
+interface Styles {
+  container: ViewStyle;
+  headText: ViewStyle;
+  contentBox: ViewStyle;
+  contextText: ViewStyle;
+}
 
 const styles = StyleSheet.create({
   container: {

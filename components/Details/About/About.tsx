@@ -1,14 +1,21 @@
-import React from 'react'
-import { View, Text } from 'react-native'
+import React, { FC } from "react";
+import { View, Text } from "react-native";
 
-import styles from './about.style'
+import styles from "./about.style";
 
-const About = () => {
-  return (
-    <View>
-      <Text>About</Text>
-    </View>
-  )
+interface Props {
+  info: string;
 }
 
-export default About
+const About: FC<Props> = ({ info }) => {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.headText}>About the job</Text>
+      <View style={styles.contentBox}>
+        <Text style={styles.contextText}>{info}</Text>
+      </View>
+    </View>
+  );
+};
+
+export default About;

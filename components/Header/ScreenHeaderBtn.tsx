@@ -5,12 +5,12 @@ import styles, { dynamicStyles } from "./screenheader.style";
 interface Props {
   iconUrl: any;
   dimension: string;
+  handlePress?: () => void;
 }
 
-const ScreenHeaderBtn: FC<Props> = ({ iconUrl, dimension }) => {
+const ScreenHeaderBtn: FC<Props> = ({ iconUrl, dimension, handlePress }) => {
   const { btnImg } = dynamicStyles(dimension);
 
-  const handlePress = () => {};
   return (
     <TouchableOpacity style={styles.btnContainer} onPress={handlePress}>
       {/* @ts-ignore */}
