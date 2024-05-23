@@ -67,7 +67,7 @@ const JobSearch = () => {
       />
 
       <FlatList
-        data={data}
+        data={data?.data || []}
         renderItem={({ item }) => (
           <NearbyJobCard
             job={item}
@@ -92,7 +92,9 @@ const JobSearch = () => {
           </>
         )}
         ListFooterComponent={() =>
-          data.length > 0 && (
+          data &&
+          data.data &&
+          data.data.length > 0 && (
             <View style={styles.footerContainer}>
               <TouchableOpacity
                 style={styles.paginationButton}

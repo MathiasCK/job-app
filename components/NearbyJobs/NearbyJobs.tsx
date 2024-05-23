@@ -27,10 +27,10 @@ const NearbyJobs = () => {
       <View style={styles.cardsContainer}>
         {isLoading ? (
           <ActivityIndicator size="large" color={COLORS.primary} />
-        ) : error ? (
+        ) : error || data?.error ? (
           <Text>Something went wrong</Text>
         ) : (
-          data?.map(job => (
+          data?.data?.map(job => (
             <NearbyJobCard
               job={job}
               key={`nearby-job-${job?.job_id}`}

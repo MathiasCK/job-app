@@ -1,5 +1,40 @@
-import { useCallback, useEffect, useState, useMemo } from "react";
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+
+const fetchData = async <T>(
+  endpoint: string,
+  query: {
+    job_id?: string;
+    query?: string;
+    page?: string;
+    num_pages?: string;
+  },
+): Promise<{ data?: T[]; error?: boolean }> => {
+  const options = {
+    method: "GET",
+    url: `https://jsearch.p.rapidapi.com/${endpoint}`,
+    params: {
+      ...query,
+    },
+    headers: {
+      "X-RapidAPI-Key": process.env.EXPO_PUBLIC_RAPID_API_KEY,
+      "X-RapidAPI-Host": "jsearch.p.rapidapi.com",
+    },
+  };
+
+  try {
+    const response = await axios.request(options);
+
+    return {
+      data: response.data.data as T[],
+    };
+  } catch (e) {
+    console.error(e);
+    return {
+      error: true,
+    };
+  }
+};
 
 const useFetch = <T>(
   endpoint: string,
@@ -9,54 +44,11 @@ const useFetch = <T>(
     page?: string;
     num_pages?: string;
   },
-): {
-  data: T[];
-  isLoading: boolean;
-  error: string | null;
-  refetch: () => void;
-} => {
-  const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  const options = useMemo(
-    () => ({
-      method: "GET",
-      url: `https://jsearch.p.rapidapi.com/${endpoint}`,
-      params: {
-        ...query,
-      },
-      headers: {
-        "X-RapidAPI-Key": process.env.EXPO_PUBLIC_RAPID_API_KEY,
-        "X-RapidAPI-Host": "jsearch.p.rapidapi.com",
-      },
-    }),
-    [endpoint, query],
-  );
-
-  const fetchData = useCallback(async () => {
-    setIsLoading(true);
-    try {
-      const response = await axios.request(options);
-      setData(response.data.data);
-    } catch (error) {
-      alert("There is an error");
-      setError((error as Error).message);
-    } finally {
-      setIsLoading(false);
-    }
-  }, [options]);
-
-  useEffect(() => {
-    fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const refetch = () => {
-    fetchData();
-  };
-
-  return { data, isLoading, error, refetch };
+) => {
+  return useQuery({
+    queryKey: [endpoint, query],
+    queryFn: () => fetchData<T>(endpoint, query),
+  });
 };
 
 export default useFetch;

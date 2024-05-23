@@ -39,19 +39,25 @@ const JobDetails = () => {
   const displayTabContent = () => {
     switch (activeTab) {
       case "About":
-        return <About info={data[0].job_description ?? "No data provided"} />;
+        return (
+          <About info={data?.data?.[0].job_description ?? "No data provided"} />
+        );
       case "Qualifications":
         return (
           <Specifics
             title="Qualifications"
-            specifics={data[0].job_highlights?.Qualifications ?? ["N/A"]}
+            specifics={
+              data?.data?.[0].job_highlights?.Qualifications ?? ["N/A"]
+            }
           />
         );
       case "Responsibilities":
         return (
           <Specifics
             title="Responsibilities"
-            specifics={data[0].job_highlights?.Responsibilities ?? ["N/A"]}
+            specifics={
+              data?.data?.[0].job_highlights?.Responsibilities ?? ["N/A"]
+            }
           />
         );
       default:
@@ -96,15 +102,15 @@ const JobDetails = () => {
             <ActivityIndicator size="large" color={COLORS.primary} />
           ) : error ? (
             <Text>Something went wrong</Text>
-          ) : data.length === 0 ? (
+          ) : data?.data?.length === 0 ? (
             <Text>No data found</Text>
           ) : (
             <View style={{ padding: SIZES.medium, paddingBottom: 100 }}>
               <Company
-                companyLogo={data[0].employer_logo}
-                jobTitle={data[0].job_title}
-                companyName={data[0].employer_name}
-                location={data[0].job_country}
+                companyLogo={data?.data?.[0].employer_logo as string}
+                jobTitle={data?.data?.[0].job_title as string}
+                companyName={data?.data?.[0].employer_name as string}
+                location={data?.data?.[0].job_country as string}
               />
               <Tabs />
               {displayTabContent()}
@@ -113,7 +119,7 @@ const JobDetails = () => {
         </ScrollView>
         <Footer
           url={
-            data[0]?.job_google_link ??
+            data?.data?.[0]?.job_google_link ??
             "https://careers.google.com/jobs/results"
           }
         />
