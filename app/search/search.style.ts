@@ -1,8 +1,20 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, ViewStyle, TextStyle, ImageStyle } from "react-native";
 
-import { COLORS, FONT, SIZES } from "../constants";
+import { COLORS, FONT, SIZES } from "../../constants";
 
-const styles = StyleSheet.create({
+interface Styles {
+  container: ViewStyle;
+  searchTitle: TextStyle;
+  noOfSearchedJobs: TextStyle;
+  loaderContainer: ViewStyle;
+  footerContainer: ViewStyle;
+  paginationButton: ViewStyle;
+  paginationImage: ImageStyle;
+  paginationTextBox: ViewStyle;
+  paginationText: TextStyle;
+}
+
+const styles = StyleSheet.create<Styles>({
   container: {
     width: "100%",
   },
